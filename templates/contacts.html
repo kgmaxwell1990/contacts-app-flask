@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>List of Contacts</h1>
+    
+    <table style="width:100%">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+    </tr>
+    
+    {% for contact in contacts %}
+    <tr style="text-align:center">
+        <td>{{ contact.name }}</td>
+        <td>{{ contact.email }}</td>
+        <td>{{ contact.phone }}</td>
+        <td><form method="POST" action="/deletecontact">
+            <input type="hidden" name="contact_to_delete" value="{{contact.name}}">
+            <input type="submit" name="Delete" value="Delete"></form></td>
+        
+    </tr>
+
+    {% endfor %}
+    
+</table>
+
+    <form method="POST" action="/addcontact">
+        <label for="name">Name: </label>
+        <input type="text" name="name"/>
+        <label for="email">Email: </label>
+        <input type="text" name="email"/>
+        <label for="phone">Phone: </label>
+        <input type="text" name="phone"/>
+        <input type="submit" value="Submit"/>
+    </form>
+    
+    <a href="/">Go Back to Home</a>
+    
+</body>
+</html>
