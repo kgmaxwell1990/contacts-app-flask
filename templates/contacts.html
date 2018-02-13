@@ -11,6 +11,7 @@
     
     <table style="width:100%">
     <tr>
+        <th>Id</th>
         <th>Name</th>
         <th>Email</th>
         <th>Phone</th>
@@ -18,11 +19,12 @@
     
     {% for contact in contacts %}
     <tr style="text-align:center">
+        <td>{{contact.id}}</td>
         <td>{{ contact.name }}</td>
         <td>{{ contact.email }}</td>
         <td>{{ contact.phone }}</td>
         <td><form method="POST" action="/deletecontact">
-            <input type="hidden" name="contact_to_delete" value="{{contact.name}}">
+            <input type="hidden" name="id_to_delete" value="{{contact.id}}">
             <input type="submit" name="Delete" value="Delete"></form></td>
         
     </tr>
